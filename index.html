@@ -1,2 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+</head>
+
+<style type="text/css">
+body,html{height:100%;}
+
+body {
+    background-color: #767676;
+    font-family: 'Brew Serif', serif;
+}
+
+#jeux {
+  min-height: 100%;
+  width: 100%;
+  background: pink;
+}
+
+#player1 {
+  height: 20px;
+  width: 20px;
+  background: red;
+}
+
+
+</style>
+
+
+
+<script type="text/javascript">
+
+$(document).keydown(function(e){
+  e = e || window.event;
+
+  if (e.keyCode == '38') {
+      // up arrow
+      alert( "up arrow pressed" );
+  }
+  else if (e.keyCode == '40') {
+      // down arrow
+      alert( "down arrow pressed" );
+  }
+  else if (e.keyCode == '37') {
+     // left arrow
+     alert( "left arrow pressed" );
+  }
+  else if (e.keyCode == '39') {
+     // right arrow
+     alert( "right arrow pressed" );
+  }
+});
+
+</script>
+
 <h1>Monster Truck!</h1>
 <p>Le jeux qui sera bientôt le plus cool des jeux de monster truck! ... enfin, j'espère.</p>
+<div id="jeux">
+
+<div id="player1">
+</div>
+
+
+</div>
+
+
+
+</html>
