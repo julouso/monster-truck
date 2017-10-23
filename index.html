@@ -6,7 +6,10 @@
 </head>
 
 <style type="text/css">
-body,html{height:100%;}
+body,html{
+  height:100%;
+  position: fixed;
+}
 
 body {
     background-color: #767676;
@@ -14,9 +17,10 @@ body {
 }
 
 #jeux {
-  min-height: 100%;
+  position: fixed;
+  height: 100%;
   width: 100%;
-  background: pink;
+  background: blue;
 }
 
 #player1 {
@@ -32,26 +36,70 @@ body {
 
 <script type="text/javascript">
 
-$(document).keydown(function(e){
-  e = e || window.event;
+// copier/coller de
+//          https://siongui.github.io/2012/06/25/javascript-keyboard-event-arrow-key-example/
 
-  if (e.keyCode == '38') {
-      // up arrow
-      alert( "up arrow pressed" );
+var Key = {
+  LEFT:   37,
+  UP:     38,
+  RIGHT:  39,
+  DOWN:   40
+};
+
+var player1 = {
+  x: 0,
+  y: 0
+};
+
+function move_player1(x,y){
+    var div = document.getElementById('player1');
+   player1.x=player1.x+x;
+   player1.y=player1.y+y;
+  div.style.transform ='translate('+player1.x+'px,'+player1.y+'px)';
+}
+
+
+/**
+ * old IE: attachEvent
+ * Firefox, Chrome, or modern browsers: addEventListener
+ */
+function _addEventListener(evt, element, fn) {
+  if (window.addEventListener) {
+    element.addEventListener(evt, fn, false);
   }
-  else if (e.keyCode == '40') {
-      // down arrow
-      alert( "down arrow pressed" );
+  else {
+    element.attachEvent('on'+evt, fn);
   }
-  else if (e.keyCode == '37') {
-     // left arrow
-     alert( "left arrow pressed" );
+}
+
+
+
+
+
+function handleKeyboardEvent(evt) {
+  if (!evt) {evt = window.event;} // for old IE compatible
+  var keycode = evt.keyCode || evt.which; // also for cross-browser compatible
+
+  var info = document.getElementById("jeux");
+  switch (keycode) {
+    case Key.LEFT:
+      move_player1(-10,0);
+      break;
+    case Key.UP:
+    move_player1(0,-10);
+      break;
+    case Key.RIGHT:
+    move_player1(10,0);
+      break;
+    case Key.DOWN:
+    move_player1(0,10);
+      break;
+    //default:
+        //info.value += "SOMEKEY ";
   }
-  else if (e.keyCode == '39') {
-     // right arrow
-     alert( "right arrow pressed" );
-  }
-});
+}
+
+_addEventListener('keydown', document, handleKeyboardEvent);
 
 </script>
 
