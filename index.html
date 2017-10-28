@@ -23,10 +23,12 @@ body {
   background: blue;
 }
 
-#player1 {
-  height: 20px;
-  width: 20px;
-  background: red;
+#joueur1 {
+  height: 100px;
+  width: 100px;
+  background-image:url("ressources/truck.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 
@@ -40,23 +42,55 @@ body {
 //          https://siongui.github.io/2012/06/25/javascript-keyboard-event-arrow-key-example/
 
 var Key = {
-  LEFT:   37,
-  UP:     38,
-  RIGHT:  39,
-  DOWN:   40
+  GAUCHE:   37,
+  HAUT:     38,
+  DROITE:  39,
+  BAS:   40
 };
 
-var player1 = {
+var position = {
   x: 0,
   y: 0
 };
 
-function move_player1(x,y){
-    var div = document.getElementById('player1');
-   player1.x=player1.x+x;
-   player1.y=player1.y+y;
-  div.style.transform ='translate('+player1.x+'px,'+player1.y+'px)';
+
+
+var direction = {
+  direction: "d",
+  x: 10,
+  y: 0
+};
+
+
+
+function tourne_droite(){
+  if(direction.direction=="g"){
+     direction.direction="d";
+     joueur1.style.setAttribute("style", "transform : rotate(90deg)");
+   }
+};
+
+function tourne_gauche(){
+  alert("tourne gauche");
+  if(direction.direction=="d"){
+     direction.direction="g";
+     joueur1.style.setAttribute("style", "transform : rotate(90deg)");
+     alert("tourne gauche");
+   }
+};
+
+function avance(){
+  position.x=position.x+direction.x;
+  position.y=position.y+direction.y;
+ joueur1.style.transform ='translate('+position.x+'px,'+position.y+'px)';
 }
+
+function recule(){
+  position.x=position.x-direction.x;
+  position.y=position.y-direction.y;
+ joueur1.style.transform ='translate('+position.x+'px,'+position.y+'px)';
+}
+
 
 
 /**
@@ -73,33 +107,32 @@ function _addEventListener(evt, element, fn) {
 }
 
 
-
-
-
 function handleKeyboardEvent(evt) {
   if (!evt) {evt = window.event;} // for old IE compatible
   var keycode = evt.keyCode || evt.which; // also for cross-browser compatible
 
   var info = document.getElementById("jeux");
+  var joueur1 = document.getElementById('joueur1');
   switch (keycode) {
-    case Key.LEFT:
-      move_player1(-10,0);
+    case Key.GAUCHE:
+    alert('gauche');
+      tourne_gauche();
       break;
-    case Key.UP:
-    move_player1(0,-10);
+    case Key.HAUT:
+      avance();
       break;
-    case Key.RIGHT:
-    move_player1(10,0);
+    case Key.DROITE:
+      tourne_droite();
       break;
-    case Key.DOWN:
-    move_player1(0,10);
+    case Key.BAS:
+      recule();
       break;
     //default:
         //info.value += "SOMEKEY ";
   }
 }
 
-_addEventListener('keydown', document, handleKeyboardEvent);
+_addEventListener('keyBAS', document, handleKeyboardEvent);
 
 </script>
 
@@ -107,7 +140,7 @@ _addEventListener('keydown', document, handleKeyboardEvent);
 <p>Le jeux qui sera bientôt le plus cool des jeux de monster truck! ... enfin, j'espère.</p>
 <div id="jeux">
 
-<div id="player1">
+<div id="joueur1">
 </div>
 
 
