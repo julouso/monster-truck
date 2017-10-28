@@ -64,31 +64,25 @@ var direction = {
 
 
 function tourne_droite(){
-  if(direction.direction=="g"){
-     direction.direction="d";
-     joueur1.style.setAttribute("style", "transform : rotate(90deg)");
-   }
+  if(direction.direction==="g"){
+    direction.direction="d";
+    joueur1.style.transform+='scale(-1,1)';
+  };
 };
 
 function tourne_gauche(){
-  alert("tourne gauche");
-  if(direction.direction=="d"){
-     direction.direction="g";
-     joueur1.style.setAttribute("style", "transform : rotate(90deg)");
-     alert("tourne gauche");
-   }
-};
+  if(direction.direction==="d"){
+    direction.direction="g";
+    joueur1.style.transform+='scale(-1,1)';
+  }};
 
 function avance(){
-  position.x=position.x+direction.x;
-  position.y=position.y+direction.y;
- joueur1.style.transform ='translate('+position.x+'px,'+position.y+'px)';
+ joueur1.style.transform +='translate('+direction.x+'px,'+direction.y+'px)';
 }
 
 function recule(){
-  position.x=position.x-direction.x;
-  position.y=position.y-direction.y;
- joueur1.style.transform ='translate('+position.x+'px,'+position.y+'px)';
+  joueur1.style.transform +='translate('+(-direction.x)+'px,'+(-direction.y)+'px)';
+
 }
 
 
@@ -115,7 +109,6 @@ function handleKeyboardEvent(evt) {
   var joueur1 = document.getElementById('joueur1');
   switch (keycode) {
     case Key.GAUCHE:
-    alert('gauche');
       tourne_gauche();
       break;
     case Key.HAUT:
@@ -132,7 +125,7 @@ function handleKeyboardEvent(evt) {
   }
 }
 
-_addEventListener('keyBAS', document, handleKeyboardEvent);
+_addEventListener('keydown', document, handleKeyboardEvent);
 
 </script>
 

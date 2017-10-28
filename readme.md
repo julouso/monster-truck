@@ -12,3 +12,8 @@
   - utilisation d'icones
   - choix de couleurs
   - textures et animations
+
+# Références
+
+  - [animation de sprites avec css keyframe](http://blog.teamtreehouse.com/css-sprite-sheet-animations-steps)
+  - [css keyframes](https://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp)
