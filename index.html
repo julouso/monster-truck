@@ -2,38 +2,38 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 
 <style type="text/css">
-body,html{
-  height:100%;
-  position: fixed;
+body,html { height: 100%; }
+.fill { 
+    min-height: 100%;
+    height: 100%;
 }
-
-body {
-    background-color: #767676;
-    font-family: 'Brew Serif', serif;
+.half-fill { 
+    min-height: 50%;
+    height: 50%;
 }
-
-#jeux {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: blue;
-}
-
 #joueur1 {
   height: 100px;
   width: 100px;
   background-image:url("ressources/truck.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 20%;
 }
 
 
 </style>
-
+<body>
 
 
 <script type="text/javascript">
@@ -105,7 +105,6 @@ function handleKeyboardEvent(evt) {
   if (!evt) {evt = window.event;} // for old IE compatible
   var keycode = evt.keyCode || evt.which; // also for cross-browser compatible
 
-  var info = document.getElementById("jeux");
   var joueur1 = document.getElementById('joueur1');
   switch (keycode) {
     case Key.GAUCHE:
@@ -128,17 +127,17 @@ function handleKeyboardEvent(evt) {
 _addEventListener('keydown', document, handleKeyboardEvent);
 
 </script>
-
-<h1>Monster Truck!</h1>
-<p>Le jeux qui sera bientôt le plus cool des jeux de monster truck! ... enfin, j'espère.</p>
-<div id="jeux">
-
-<div id="joueur1">
+<div class="container-fluid fill">
+   <div class="container-fluid">
+      <div class="jumbotron">
+         <h1>Monster Truck!</h1>
+         <p>Le jeux qui sera bientôt le plus cool des jeux de monster truck! ... enfin, j'espère.</p>
+      </div>
+   </div>
+   <div id="jeux" class="container-fluid w-100 bg-primary half-fill" >
+      <div id="joueur1">
+      </div>
+   </div>
 </div>
-
-
-</div>
-
-
-
+</body>
 </html>
