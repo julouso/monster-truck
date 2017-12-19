@@ -8,136 +8,73 @@
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <link href="style.css" rel="stylesheet">
+
+
+
 </head>
 
-<style type="text/css">
-body,html { height: 100%; }
-.fill { 
-    min-height: 100%;
-    height: 100%;
-}
-.half-fill { 
-    min-height: 50%;
-    height: 50%;
-}
-#joueur1 {
-  height: 100px;
-  width: 100px;
-  background-image:url("ressources/truck.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-}
 
-
-</style>
 <body>
 
-
-<script type="text/javascript">
-
-// copier/coller de
-//          https://siongui.github.io/2012/06/25/javascript-keyboard-event-arrow-key-example/
-
-var Key = {
-  GAUCHE:   37,
-  HAUT:     38,
-  DROITE:  39,
-  BAS:   40
-};
-
-var position = {
-  x: 0,
-  y: 0
-};
-
-
-
-var direction = {
-  direction: "d",
-  x: 10,
-  y: 0
-};
-
-
-
-function tourne_droite(){
-  if(direction.direction==="g"){
-    direction.direction="d";
-    joueur1.style.transform+='scale(-1,1)';
-  };
-};
-
-function tourne_gauche(){
-  if(direction.direction==="d"){
-    direction.direction="g";
-    joueur1.style.transform+='scale(-1,1)';
-  }};
-
-function avance(){
- joueur1.style.transform +='translate('+direction.x+'px,'+direction.y+'px)';
-}
-
-function recule(){
-  joueur1.style.transform +='translate('+(-direction.x)+'px,'+(-direction.y)+'px)';
-
-}
-
-
-
-/**
- * old IE: attachEvent
- * Firefox, Chrome, or modern browsers: addEventListener
- */
-function _addEventListener(evt, element, fn) {
-  if (window.addEventListener) {
-    element.addEventListener(evt, fn, false);
-  }
-  else {
-    element.attachEvent('on'+evt, fn);
-  }
-}
-
-
-function handleKeyboardEvent(evt) {
-  if (!evt) {evt = window.event;} // for old IE compatible
-  var keycode = evt.keyCode || evt.which; // also for cross-browser compatible
-
-  var joueur1 = document.getElementById('joueur1');
-  switch (keycode) {
-    case Key.GAUCHE:
-      tourne_gauche();
-      break;
-    case Key.HAUT:
-      avance();
-      break;
-    case Key.DROITE:
-      tourne_droite();
-      break;
-    case Key.BAS:
-      recule();
-      break;
-    //default:
-        //info.value += "SOMEKEY ";
-  }
-}
-
-_addEventListener('keydown', document, handleKeyboardEvent);
-
-</script>
 <div class="container-fluid fill">
    <div class="container-fluid">
-      <div class="jumbotron">
-         <h1>Monster Truck!</h1>
+      <div class="mt-4 mb-4 p-4" style="background-color: lightgray; border-radius: 25px;">
+        
+        <div class="row">
+          <div class="col">
+             <h1>Monster Truck!</h1>
          <p>Le jeux qui sera bientôt le plus cool des jeux de monster truck! ... enfin, j'espère.</p>
+          </div>
+          <div class="col">
+         <table class="table table-sm">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Bleu</th>
+      <th>Rouge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">accélération</th>
+      <td>haut</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <th scope="row">décélération</th>
+      <td>bas</td>
+      <td>s</td>
+    </tr>
+    <tr>
+      <th scope="row">droite</th>
+      <td>droite</td>
+      <td>a</td>
+    </tr>
+    <tr>
+      <th scope="row">gauche</th>
+      <td>gauche</td>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+
       </div>
    </div>
-   <div id="jeux" class="container-fluid w-100 bg-primary half-fill" >
-      <div id="joueur1">
-      </div>
+   <div id="zoneDeJeu" class="container-fluid w-100 half-fill" >
+      <div id="joueur1"></div>
+      <div id="joueur2"></div>
    </div>
 </div>
+
+<script type="text/javascript" src="monster-truck.js">
+
+</script>
+
 </body>
 </html>

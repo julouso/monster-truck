@@ -1,0 +1,23 @@
+
+body,html { 
+	height: 100%;
+	width:100%;
+	overflow: hidden;
+ }
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}
+.half-fill { 
+    min-height: 50%;
+    height: 50%;
+}
+
+
+#zoneDeJeu {
+     background: linear-gradient(blue, white);
+     border-bottom: solid 5px black;
+
+}
+
+
