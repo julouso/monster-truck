@@ -1,5 +1,3 @@
-
-body,html { 
 	height: 100%;
 	width:100%;
 	overflow: hidden;
@@ -15,7 +13,7 @@ body,html {
 
 
 #zoneDeJeu {
-     background: linear-gradient(blue, white);
+     background: linear-gradient(blue, red);
      border-bottom: solid 5px black;
 
 }
