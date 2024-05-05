@@ -52,7 +52,7 @@ class Monster {
 			this.Key.UP=key.HAUT;
 
 			this.speed={
-				max:10000000,
+				max:25,
 				min:0
 			};
 
@@ -91,7 +91,7 @@ console.log("vitesse: ", this.speed)
 
 	  };
 
-    acceleration(){return .001};
+    acceleration(){return .1};
     decceleration(){ return .25};
 
     tourne_droite(){
