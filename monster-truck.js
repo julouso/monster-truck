@@ -52,8 +52,8 @@ class Monster {
 			this.Key.UP=key.HAUT;
 
 			this.speed={
-				max:10,
-				min:-2
+				max:10000000,
+				min:0
 			};
 
 
@@ -85,13 +85,13 @@ class Monster {
             this.position.y=me.y;
 
 
-
+console.log("vitesse: ", this.speed)
             
 
 
 	  };
 
-    acceleration(){return .5};
+    acceleration(){return .001};
     decceleration(){ return .25};
 
     tourne_droite(){
@@ -159,7 +159,7 @@ class Monster {
   // this.joueur1.style.transform +='translate('+(this.direction.x*this.move.x)+'px,'+(-this.direction.y*this.move.y)+'px)';
 
 
-
+      
 
     };
 

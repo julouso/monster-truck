@@ -15,7 +15,7 @@ body, html{
 
 
 #zoneDeJeu {
-     background: linear-gradient(blue, red);
+     background: linear-gradient(rgba(82, 133, 172, 0.8075), rgb(219, 219, 72));
      border-bottom: solid 5px black;
 
 }
