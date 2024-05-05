@@ -264,9 +264,9 @@ _addEventListener('keydown', document, handleKeyboardEvent);
     
     
       Monster1.update();
-    Monster1.update();
+      Monster1.draw();
 
-     Monster1.draw();
+     Monster2.update();
      Monster2.draw();
   }
   
