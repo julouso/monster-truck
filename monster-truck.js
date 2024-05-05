@@ -52,7 +52,7 @@ class Monster {
 			this.Key.UP=key.HAUT;
 
 			this.speed={
-				max:25,
+				max:100,
 				min:0
 			};
 
@@ -77,22 +77,23 @@ class Monster {
             this.joueur1.style.position='absolute';
             this.joueur1.style.bottom=0;
             this.joueur1.style.left=init_position;
+            this.joueur1.style.border="solid 1px black";
 
             var me=document.getElementById(this.id).getBoundingClientRect();
 
             this.position={};
             this.position.x=me.x;
             this.position.y=me.y;
-
-
-console.log("vitesse: ", this.speed)
             
 
 
 	  };
 
-    acceleration(){return .1};
-    decceleration(){ return .25};
+
+
+
+    acceleration(){return .5};
+    decceleration(){ return .5};
 
     tourne_droite(){
 		  if(this.direction.direction==="g"){
@@ -101,11 +102,6 @@ console.log("vitesse: ", this.speed)
 		    this.direction.x=1;
 		  };
 		};
-
-
- 
-
-
   tourne_gauche(){
 	  if(this.direction.direction==="d"){
 	    this.direction.direction="g";
@@ -114,6 +110,13 @@ console.log("vitesse: ", this.speed)
 	  }
 	};
 
+  reverse(){
+    if(this.direction.direction === "g") {
+      this.tourne_droite()
+    } else {
+      this.tourne_gauche()
+    }
+  }
    draw(){
         this.joueur1.style.left=this.position.x+'px';
 
@@ -166,6 +169,21 @@ console.log("vitesse: ", this.speed)
 
 
 };
+
+
+function detectCollision(truck1, truck2){
+
+  const dist =Math.abs(truck1.position.x - truck2.position.x);
+   console.log("dist: ", dist)
+  
+  if( dist <= 100 ) {
+    return true
+  }
+  return false
+
+
+}
+
 
 var Monster1 = new Monster("joueur1",Key1,"ressources/truck_bleu.png",'10%');
  window.addEventListener('keyup', function(event) { Monster1.Key.onKeyup(event); }, false);
@@ -231,13 +249,25 @@ _addEventListener('keydown', document, handleKeyboardEvent);
 ;(function () {
   function main() {
     window.requestAnimationFrame( main );
-    
     // Your main loop contents.
-     Monster1.draw();
-     Monster1.update();
+    
+    if( detectCollision(Monster1,Monster2) ){
 
+      Monster1.reverse()
+      Monster1.update();
+      Monster1.move.x = Math.floor(Monster1.move.x/2)
+
+      Monster2.reverse()
+    Monster1.update();
+      Monster2.move.x = Math.floor(Monster2.move.x/2)
+    }
+    
+    
+      Monster1.update();
+    Monster1.update();
+
+     Monster1.draw();
      Monster2.draw();
-     Monster2.update();
   }
   
   main(); // Start the cycle
